@@ -9,7 +9,7 @@ xlabel('Time');
 ylabel('Amplitude');
 ylim([0, 2]);
 
-for kmax = 12:2:12
+for kmax = 22:2:12
     k_values = 1:kmax;
     
     
