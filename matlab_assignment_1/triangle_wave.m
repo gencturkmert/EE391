@@ -3,7 +3,7 @@ x = @(t) (t >= 0 & t < 2) .* t - ((t >= 2 & t < 4) .* (-4 + t));
 figure;
 t = linspace(-8, 8, 400);
 T0 = 4;
-plot(t, x(mod(t_period,4)), 'b-', 'LineWidth', 2);
+plot(t, x(mod(t_period,T0)), 'b-', 'LineWidth', 2);
 title('Original Signal');
 xlabel('Time');
 ylabel('Amplitude');
@@ -19,9 +19,9 @@ for kmax = 22:2:12
     for idx = 1:length(k_values)
         k = k_values(idx);
     
-        an = integral(@(t) x(t) .* exp(-1i * 2*t* pi * k / 4),0,T0) / T0;
-        bn = integral(@(t) x(t) .* exp(-1i * 2*t* pi * -k / 4),0,T0) / T0;
-        x_reconstructed = x_reconstructed + an * exp(1i * 2* pi*t * k / 4) + bn * exp(1i * 2* pi*t * -k / 4);
+        an = integral(@(t) x(t) .* exp(-1i * 2*t* pi * k / T0),0,T0) / T0;
+        bn = integral(@(t) x(t) .* exp(-1i * 2*t* pi * -k / T0),0,T0) / T0;
+        x_reconstructed = x_reconstructed + an * exp(1i * 2* pi*t * k / T0) + bn * exp(1i * 2* pi*t * -k / T0);
     end
     
     % Plot reconstructed signal in a new figure for each iteration
