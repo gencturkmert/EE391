@@ -1,6 +1,6 @@
-x_piecewise = @(t) (t >= 0 & t < 2) .* t - ((t >= 2 & t < 4) .* (-4 + t));
+x = @(t) (t >= 0 & t < 2) .* t - ((t >= 2 & t < 4) .* (-4 + t));
 figure;
-plot(t_period, x_piecewise(mod(t_period,4)), 'b-', 'LineWidth', 2);
+plot(t_period, x(mod(t_period,4)), 'b-', 'LineWidth', 2);
 title('Original Signal');
 xlabel('Time');
 ylabel('Amplitude');
@@ -12,13 +12,13 @@ for kmax = 2:2:12
     t_period = linspace(-8, 8, 400);
     
     x_reconstructed_piecewise = zeros(size(t_period));
-    a0 = integral(@(t) x_piecewise(t), 0, 4) / 4;
+    a0 = integral(@(t) x(t), 0, 4) / 4;
     x_reconstructed_piecewise = x_reconstructed_piecewise + a0;
     for idx = 1:length(k_values)
         k = k_values(idx);
     
-        an_integral = @(t) x_piecewise(t).*cos(2*pi*k*t/4);
-        bn_integral = @(t) x_piecewise(t).*sin(2*pi*k*t/4);
+        an_integral = @(t) x(t).*cos(2*pi*k*t/4);
+        bn_integral = @(t) x(t).*sin(2*pi*k*t/4);
     
         an = integral(an_integral, 0, 4) / 2;
         bn = integral(bn_integral, 0, 4) / 2;
