@@ -26,7 +26,7 @@ for kmax = 22:2:12
     
     % Plot reconstructed signal in a new figure for each iteration
     figure;
-    plot(t_period, real(x_reconstructed), 'r--', 'LineWidth', 2);
+    plot(t, real(x_reconstructed), 'r--', 'LineWidth', 2);
     title(['Reconstructed Signal (k = ', num2str(kmax), ')']);
     xlabel('Time');
     ylabel('Amplitude');
