@@ -1,4 +1,4 @@
 # EE391
-EE391 Signal Course Bilkent University
+EE391 Signals Course Bilkent University
 
 Matlab Projects & Analytical Homeworks
